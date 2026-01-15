@@ -1,11 +1,18 @@
+import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import { User } from './entities/User';
+import { Post } from './entities/Post';
+import { Hashtag } from './entities/Hashtag';
+import { Follow } from './entities/Follow';
+import { Like} from './entities/Like';
 
 export const AppDataSource = new DataSource({
   type: 'sqlite',
   database: 'database.sqlite',
-  synchronize: false, // Do not use synchronize, write migrations instead
-  logging: true,
-  entities: ['src/entities/**/*.ts'],
-  subscribers: [],
-  migrations: ['src/migrations/**/*.ts'],
+
+  entities: [User, Post, Hashtag, Follow, Like],
+  migrations: ['src/migrations/*.ts'],
+
+  synchronize: false,
+  logging: false,
 });

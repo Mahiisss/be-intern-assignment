@@ -1,22 +1,27 @@
 import { Router } from 'express';
-import { validate } from '../middleware/validation.middleware';
-import { createUserSchema, updateUserSchema } from '../validations/user.validation';
 import { UserController } from '../controllers/user.controller';
 
-export const userRouter = Router();
+const router = Router();
 const userController = new UserController();
 
-// Get all users
-userRouter.get('/', userController.getAllUsers.bind(userController));
+/*
+  USER CRUD
+ */
+router.get('/', userController.getAllUsers.bind(userController));
+router.get('/:id', userController.getUserById.bind(userController));
+router.post('/', userController.createUser.bind(userController));
+router.put('/:id', userController.updateUser.bind(userController));
+router.delete('/:id', userController.deleteUser.bind(userController));
 
-// Get user by id
-userRouter.get('/:id', userController.getUserById.bind(userController));
+/* FOLLOW / SOCIAL
+ */
+router.get('/:id/followers', userController.getUserFollowers.bind(userController));
+router.get('/:id/following', userController.getFollowing.bind(userController));
 
-// Create new user
-userRouter.post('/', validate(createUserSchema), userController.createUser.bind(userController));
+/*
+  USER ACTIVITY
+ */
+router.get('/:id/activity', userController.getUserActivity.bind(userController));
 
-// Update user
-userRouter.put('/:id', validate(updateUserSchema), userController.updateUser.bind(userController));
+export default router;
 
-// Delete user
-userRouter.delete('/:id', userController.deleteUser.bind(userController));
