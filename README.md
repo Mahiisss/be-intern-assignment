@@ -151,3 +151,11 @@ Please have your development environment fully configured and ready before the i
 6. Use SQLite Viewer Extension in VS Code to view the database, or any other viewer if not using VS Code
 
 Made with ❤️ by the VI team
+
+
+---
+
+## 🎥 Loom Walkthrough Video
+
+Backend Assignment Walkthrough (CLI + Browser Demo):  
+👉 [https://loom.com/share/YOUR_VIDEO_ID](https://drive.google.com/drive/folders/1WcrBYMGPhfG7nUgi1_Wqr9GpODmhw6fY?usp=drive_link)
